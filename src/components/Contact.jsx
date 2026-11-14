@@ -3,23 +3,67 @@ import { contact, profile } from '../data/content.js'
 import Reveal from './Reveal.jsx'
 import { SectionLabel, isPlaceholder } from './ui.jsx'
 
+// Web3Forms delivers submissions to the email the access key was created with.
+// Set VITE_WEB3FORMS_ACCESS_KEY in .env locally and in your host's environment variables.
+const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
+
 const field =
   'h-12 rounded-xl border border-[#DADDE8] bg-[#F7F8FC] px-3.5 text-base text-[#0E1116] outline-none transition focus:border-[#3451F5] focus:ring-4 focus:ring-[#3451F5]/15'
 
+const empty = { name: '', email: '', message: '' }
+
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [form, setForm] = useState(empty)
+  const [status, setStatus] = useState('idle') // idle | sending | sent | error
   const hasEmail = !isPlaceholder(profile.email)
 
-  const update = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
+  const update = (k) => (e) => {
+    setForm((f) => ({ ...f, [k]: e.target.value }))
+    if (status === 'sent' || status === 'error') setStatus('idle')
+  }
 
-  // No backend needed: opens the visitor's mail app with the message filled in.
-  const submit = (e) => {
-    e.preventDefault()
-    if (!hasEmail) return
+  const mailtoHref = () => {
     const subject = encodeURIComponent(`Portfolio enquiry from ${form.name}`)
     const body = encodeURIComponent(`${form.message}\n\n— ${form.name} (${form.email})`)
-    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`
+    return `mailto:${profile.email}?subject=${subject}&body=${body}`
   }
+
+  const submit = async (e) => {
+    e.preventDefault()
+
+    // No key configured (e.g. local dev without .env): fall back to the visitor's mail app.
+    if (!ACCESS_KEY) {
+      if (hasEmail) window.location.href = mailtoHref()
+      return
+    }
+
+    // Honeypot: real visitors never see or tick this box.
+    if (new FormData(e.currentTarget).get('botcheck')) return
+
+    setStatus('sending')
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: ACCESS_KEY,
+          subject: `New message from ${form.name} — Portfolio`,
+          from_name: 'Portfolio Contact Form',
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok || !data.success) throw new Error(data.message || 'Request failed')
+      setStatus('sent')
+      setForm(empty)
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  const sending = status === 'sending'
 
   return (
     <section id="contact" className="scroll-mt-24 px-5 pt-24 sm:px-6 sm:pt-32">
@@ -39,6 +83,7 @@ export default function Contact() {
         </div>
 
         <form onSubmit={submit} className="flex min-w-0 flex-col gap-4 rounded-3xl bg-white p-7 text-[#0E1116] lg:flex-1">
+          <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
           <label className="flex flex-col gap-1.5 text-sm font-medium">
             Name
             <input required type="text" autoComplete="name" value={form.name} onChange={update('name')} className={field} />
@@ -59,14 +104,24 @@ export default function Contact() {
           </label>
           <button
             type="submit"
-            disabled={!hasEmail}
-            className="h-[52px] cursor-pointer rounded-full bg-[#0E1116] text-base font-medium text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+            disabled={sending || (!ACCESS_KEY && !hasEmail)}
+            className="h-[52px] cursor-pointer rounded-full bg-[#0E1116] text-base font-medium text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            Send message
+            {sending ? 'Sending…' : 'Send message'}
           </button>
-          {!hasEmail && (
-            <p className="text-center text-xs text-[#565C6B]">Add your email in src/data/content.js to enable this form.</p>
-          )}
+
+          <p aria-live="polite" className="min-h-5 text-center text-sm">
+            {status === 'sent' && <span className="text-[#1F7A45]">Thanks! Your message was sent. I’ll reply soon.</span>}
+            {status === 'error' && (
+              <span className="text-[#B42318]">
+                Couldn’t send right now.{' '}
+                <a href={mailtoHref()} className="underline">
+                  Email me directly
+                </a>
+                .
+              </span>
+            )}
+          </p>
         </form>
       </Reveal>
     </section>

@@ -31,7 +31,7 @@ Full-stack web apps with React and Node, problem solving in C++.
 - **Content in one file** — every piece of text, link and project lives in [`src/data/content.js`](src/data/content.js).
 - **Subtle motion** — scroll fade-ins and floating tags, all switched off for visitors who prefer reduced motion.
 - **Accessible** — semantic HTML, labelled controls, keyboard skip link and visible focus states.
-- **No backend needed** — the contact form opens the visitor's mail app with the message filled in.
+- **No backend needed** — the contact form sends messages through [Web3Forms](https://web3forms.com), with a spam honeypot and sending/sent/error states.
 - **Fast** — about 77 KB of gzipped JavaScript, compressed images, lazy-loaded screenshots.
 
 ## Sections
@@ -69,6 +69,8 @@ npm run dev
 ```
 
 Then open http://localhost:5173.
+
+**Contact form:** copy `.env.example` to `.env` and add a free [Web3Forms](https://web3forms.com) access key. Messages go to the email the key was created with. Without a key, the form falls back to opening the visitor's mail app. When deploying, add the same `VITE_WEB3FORMS_ACCESS_KEY` variable in your host's settings.
 
 | Command | What it does |
 |---|---|
