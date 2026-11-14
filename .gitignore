@@ -1,6 +1,26 @@
+# Dependencies and build output
 node_modules
 dist
-.DS_Store
-*.log
+
+# Environment variables (keep secrets out of git)
 .env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# Deployment
+.vercel
+
+# Editors and tools
+.vscode/*
+!.vscode/extensions.json
+.idea
 .claude
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
