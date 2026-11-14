@@ -106,25 +106,18 @@ Open [`src/data/content.js`](src/data/content.js) and change the text, links or 
 
 ## Updating the CV
 
-The CV source is [`cv/cv.html`](cv/cv.html). After editing it, export it to `public/resume.pdf`:
-
-- **Any browser:** open `cv/cv.html`, choose Print → Save as PDF, paper size A4, margins none, and turn off headers and footers.
-- **Command line (Windows, Microsoft Edge):**
-
-  ```bash
-  "/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" --headless=new --no-pdf-header-footer --print-to-pdf="public/resume.pdf" "file:///D:/Mohan%20Portfolio/cv/cv.html"
-  ```
-
-Check that the result is still a single page.
+The CV source is [`cv/cv.html`](cv/cv.html), a plain HTML page sized for A4. To export it to `public/resume.pdf`, open it in a browser and choose **Print → Save as PDF** with paper size A4, margins none, and headers and footers turned off. Check that the result is still a single page.
 
 ## Deployment
 
-The site is a static Vite build, so it runs on any static host. With Vercel:
+The site is a static Vite build, so it runs on any static host — Vercel, Netlify, Cloudflare Pages or GitHub Pages.
 
-1. Import this repository at [vercel.com/new](https://vercel.com/new). Vercel detects Vite automatically (build command `npm run build`, output directory `dist`).
-2. Under **Project → Settings → Domains**, add `paudelmohan.com.np` and update the domain's DNS records as Vercel instructs.
+| Setting | Value |
+|---|---|
+| Build command | `npm run build` |
+| Output directory | `dist` |
 
-Every push to `main` deploys automatically.
+**With Vercel:** fork this repository, import your fork at [vercel.com/new](https://vercel.com/new) (Vite is detected automatically), and deploy. To use your own domain, add it under **Project → Settings → Domains** and follow the DNS instructions. Every push to `main` then redeploys automatically.
 
 ## Contact
 
