@@ -14,6 +14,7 @@ export const profile = {
   email: 'contact.paudelmohan@gmail.com',
   // Generated from cv/cv.html (see README). Set to null to hide the Download CV button.
   resume: '/resume.pdf',
+  resumeFileName: 'Mohan_Paudel_CV.pdf', // name the file gets when visitors download it
   links: {
     github: 'https://github.com/paudelmohan27',
     linkedin: 'https://linkedin.com/in/paudelmohan27',
@@ -31,7 +32,7 @@ export const about = {
   statement: 'I build web apps that students actually use.',
   statementMuted: 'Now learning to make them faster, safer and simpler — one project at a time.',
   stats: [
-    { value: '15', label: 'Public repositories on GitHub' },
+    { value: '15+', label: 'Public repositories on GitHub' },
     { value: '4', label: 'Apps live on the web' },
     { value: '2nd', label: 'Year, Computer Engineering', accent: true },
   ],

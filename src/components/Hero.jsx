@@ -79,7 +79,7 @@ export default function Hero() {
           <div className="mt-9 flex flex-wrap gap-3">
             <PillArrowLink href="#work">View projects</PillArrowLink>
             {profile.resume && (
-              <GhostButton href={profile.resume} download>
+              <GhostButton href={profile.resume} download={profile.resumeFileName}>
                 <Download />
                 Download CV
               </GhostButton>

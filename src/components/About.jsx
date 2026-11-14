@@ -7,7 +7,9 @@ export default function About() {
     <section id="about" className="scroll-mt-24 px-5 pt-24 sm:px-6 sm:pt-32">
       <div className="mx-auto flex max-w-[1240px] flex-col gap-8 lg:flex-row lg:gap-16">
         <div className="lg:w-[220px] lg:shrink-0">
-          <SectionLabel>About me</SectionLabel>
+          <h2>
+            <SectionLabel>About me</SectionLabel>
+          </h2>
         </div>
         <div className="min-w-0 flex-1">
           <Reveal as="p" className="text-3xl leading-[1.15] font-medium tracking-[-0.03em] sm:text-4xl lg:text-5xl">

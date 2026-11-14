@@ -18,7 +18,7 @@ export default function Footer() {
             </a>
           )}
           {profile.resume && (
-            <a href={profile.resume} className="hover:text-ink">
+            <a href={profile.resume} download={profile.resumeFileName} className="hover:text-ink">
               Resume
             </a>
           )}

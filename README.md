@@ -84,6 +84,8 @@ Then open http://localhost:5173.
 ├── cv/
 │   └── cv.html              CV source (exported to public/resume.pdf)
 ├── docs/                    README screenshots
+├── og/
+│   └── og-card.html         Source for the link preview image (public/og-image.jpg, 1200×630)
 ├── public/
 │   ├── mohan.webp           Portrait (transparent background)
 │   ├── resume.pdf           CV linked from the site
