@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Theme colors as CSS variables so light/dark switch in one place. */
+:root {
+  --page: #f4f5fa;
+  --card: #ffffff;
+  --soft: #f1f3fa;
+  --ink: #0e1116;
+  --muted: #565c6b;
+  --faint: #9aa0ae;
+  --line: rgba(14, 17, 22, 0.12);
+  --tint: #cbd5ff;
+  --tint-2: #e8ecfb;
+  --accent: #3451f5;
+  --accent-2: #7c93ff;
+  --pill: #ffffff;
+  --solid: #0e1116;
+  --on-solid: #ffffff;
+  --ghost-word: rgba(255, 255, 255, 0.75);
+}
+
+.dark {
+  --page: #0b0d14;
+  --card: #141826;
+  --soft: #1c2133;
+  --ink: #edeff5;
+  --muted: #a6acbc;
+  --faint: #6b7183;
+  --line: rgba(255, 255, 255, 0.12);
+  --tint: #1c2a6b;
+  --tint-2: #10142a;
+  --accent: #4a64ff;
+  --accent-2: #1a2a80;
+  --pill: rgba(255, 255, 255, 0.08);
+  --solid: #ffffff;
+  --on-solid: #0b0d14;
+  --ghost-word: rgba(255, 255, 255, 0.05);
+}
+
+@theme inline {
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --color-page: var(--page);
+  --color-card: var(--card);
+  --color-soft: var(--soft);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-tint: var(--tint);
+  --color-tint-2: var(--tint-2);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-pill: var(--pill);
+  --color-solid: var(--solid);
+  --color-on-solid: var(--on-solid);
+  --color-ghost: var(--ghost-word);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@layer components {
+  .social {
+    @apply inline-flex size-11 items-center justify-center rounded-full bg-card text-ink transition-colors hover:text-accent;
+  }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Gentle float for hero tags */
+@keyframes float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -8px; }
+}
+.float { animation: float 5s ease-in-out infinite; }
+.float-delay { animation-delay: -2.5s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .float { animation: none; }
+}
