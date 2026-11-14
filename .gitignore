@@ -1,6 +1,7 @@
 # Dependencies and build output
 node_modules
 dist
+dist-server
 
 # Environment variables (keep secrets out of git)
 .env

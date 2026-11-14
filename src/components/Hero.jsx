@@ -70,9 +70,11 @@ export default function Hero() {
             <span className="size-2 rounded-full bg-[#1F9D55] dark:bg-[#3DDC84]" />
             {profile.status}
           </div>
-          <p className="mt-7 text-xl text-muted">Hey, I’m {profile.firstName}.</p>
-          <h1 className="mt-2.5 text-5xl leading-[0.98] font-semibold tracking-[-0.045em] sm:text-7xl xl:text-[88px]">
-            {profile.role.lead} <span className="text-accent dark:text-[#8FA2FF]">{profile.role.highlight}</span>
+          <h1>
+            <span className="mt-7 block text-xl font-normal text-muted">Hey, I’m {profile.name}.</span>
+            <span className="mt-2.5 block text-5xl leading-[0.98] font-semibold tracking-[-0.045em] sm:text-7xl xl:text-[88px]">
+              {profile.role.lead} <span className="text-accent dark:text-[#8FA2FF]">{profile.role.highlight}</span>
+            </span>
           </h1>
           <p className="mt-6 max-w-[500px] text-lg leading-relaxed text-muted sm:text-[19px]">{profile.intro}</p>
 

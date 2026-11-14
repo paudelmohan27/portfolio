@@ -33,6 +33,7 @@ Full-stack web apps with React and Node, problem solving in C++.
 - **Accessible** — semantic HTML, labelled controls, keyboard skip link and visible focus states.
 - **No backend needed** — the contact form sends messages through [Web3Forms](https://web3forms.com), with a spam honeypot and sending/sent/error states.
 - **Fast** — about 77 KB of gzipped JavaScript, compressed images, lazy-loaded screenshots.
+- **SEO-ready** — the page is prerendered to static HTML at build time, with Open Graph tags, structured data, a sitemap and `robots.txt`.
 
 ## Sections
 
@@ -75,7 +76,7 @@ Then open http://localhost:5173.
 | Command | What it does |
 |---|---|
 | `npm run dev` | Start the dev server with hot reload |
-| `npm run build` | Build the production site into `dist/` |
+| `npm run build` | Build the production site into `dist/` and prerender the page to HTML |
 | `npm run preview` | Serve the production build locally |
 
 ## Project structure
@@ -90,13 +91,16 @@ Then open http://localhost:5173.
 │   ├── mohan.webp           Portrait (transparent background)
 │   ├── resume.pdf           CV linked from the site
 │   └── projects/            Project screenshots
+├── scripts/
+│   └── prerender.js         Writes the rendered page into dist/index.html after the build
 └── src/
     ├── data/content.js      All site content
     ├── components/          Navbar, Hero, About, Skills, Projects, Journey, Contact, Footer
     ├── hooks/useTheme.js    Light/dark toggle
     ├── index.css            Theme tokens and animations
     ├── App.jsx
-    └── main.jsx
+    ├── main.jsx             Browser entry (hydrates the prerendered HTML)
+    └── entry-server.jsx     Build-time entry used for prerendering
 ```
 
 ## Editing content
