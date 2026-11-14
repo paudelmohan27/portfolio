@@ -75,7 +75,7 @@ export const projects = [
     year: '2026',
     description: 'A desktop diary with login, entry search and local storage.',
     stack: 'C++ · Qt Widgets',
-    image: null,
+    image: '/projects/digital-diary.jpg',
     tint: 'green',
     live: null,
     code: 'https://github.com/paudelmohan27/Digital-Diary',
