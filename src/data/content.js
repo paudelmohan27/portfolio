@@ -54,7 +54,7 @@ export const featuredProject = {
     'Avatar uploads with cropping (Cloudinary)',
   ],
   stack: ['React', 'Express', 'MongoDB', 'Tailwind'],
-  image: null, // e.g. '/projects/studytracker.png'
+  image: '/projects/studytracker.jpg',
   live: 'https://tracker.paudelmohan.com.np',
   code: 'https://github.com/paudelmohan27/StudyTracker',
 }
