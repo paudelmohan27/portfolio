@@ -4,7 +4,7 @@ import { Chip, SectionLabel, SectionTitle } from './ui.jsx'
 
 export default function Skills() {
   return (
-    <section className="px-5 pt-24 sm:px-6 sm:pt-32">
+    <section className="px-5 pt-20 sm:px-6 sm:pt-32">
       <div className="mx-auto max-w-[1240px]">
         <SectionLabel>Toolbox</SectionLabel>
         <SectionTitle>What I work with</SectionTitle>

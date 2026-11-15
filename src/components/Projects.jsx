@@ -10,7 +10,7 @@ const tints = {
 }
 
 function Shot({ src, alt, label, className = '' }) {
-  if (src) return <img src={src} alt={alt} className={`h-full w-full object-cover object-top ${className}`} loading="lazy" />
+  if (src) return <img src={src} alt={alt} className={`h-full w-full object-cover object-left-top ${className}`} loading="lazy" />
   return <span className="font-mono text-xs text-muted">[ {label} ]</span>
 }
 
@@ -64,7 +64,7 @@ function Featured() {
 
 export default function Projects() {
   return (
-    <section id="work" className="scroll-mt-24 px-5 pt-24 sm:px-6 sm:pt-32">
+    <section id="work" className="scroll-mt-24 px-5 pt-20 sm:px-6 sm:pt-32">
       <div className="mx-auto max-w-[1240px]">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -87,7 +87,7 @@ export default function Projects() {
           {projects.map((p, i) => (
             <Reveal key={p.title} as="article" delay={i * 90} className="group flex flex-col rounded-[28px] bg-card p-3.5">
               <div
-                className={`flex h-[220px] items-center justify-center overflow-hidden rounded-[18px] bg-gradient-to-br ${tints[p.tint]}`}
+                className={`flex aspect-[16/10] items-center justify-center overflow-hidden rounded-[18px] bg-gradient-to-br ${tints[p.tint]}`}
               >
                 <Shot
                   src={p.image}

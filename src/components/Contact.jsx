@@ -66,7 +66,7 @@ export default function Contact() {
   const sending = status === 'sending'
 
   return (
-    <section id="contact" className="scroll-mt-24 px-5 pt-24 sm:px-6 sm:pt-32">
+    <section id="contact" className="scroll-mt-24 px-5 pt-20 sm:px-6 sm:pt-32">
       <Reveal className="mx-auto flex max-w-[1240px] flex-col gap-12 rounded-[36px] bg-gradient-to-br from-[#3451F5] to-[#6F86FF] p-8 text-white sm:p-12 lg:flex-row lg:p-[72px] dark:from-[#2B3FD0] dark:to-[#1A2A80]">
         <div className="min-w-0 lg:flex-1">
           <SectionLabel light>Contact</SectionLabel>

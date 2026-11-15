@@ -32,9 +32,9 @@ export const about = {
   statement: 'I build web apps that students actually use.',
   statementMuted: 'Now learning to make them faster, safer and simpler — one project at a time.',
   stats: [
-    { value: '15+', label: 'Public repositories on GitHub' },
-    { value: '4', label: 'Apps live on the web' },
-    { value: '2nd', label: 'Year, Computer Engineering', accent: true },
+    { value: '15+', label: 'Public GitHub repos' },
+    { value: '4', label: 'Apps live online' },
+    { value: '2nd', label: 'Year of Computer Engineering', accent: true },
   ],
 }
 

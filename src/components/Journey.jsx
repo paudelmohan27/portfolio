@@ -4,7 +4,7 @@ import { SectionLabel, SectionTitle } from './ui.jsx'
 
 export default function Journey() {
   return (
-    <section className="px-5 pt-24 sm:px-6 sm:pt-32">
+    <section className="px-5 pt-20 sm:px-6 sm:pt-32">
       <div className="mx-auto flex max-w-[1240px] flex-col gap-8 lg:flex-row lg:gap-16">
         <div className="lg:w-[220px] lg:shrink-0">
           <SectionLabel>Journey</SectionLabel>
