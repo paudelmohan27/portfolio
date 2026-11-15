@@ -17,9 +17,10 @@ function Shot({ src, alt, label, className = '' }) {
 function Featured() {
   return (
     <Reveal as="article" className="mt-10 flex flex-col gap-4 rounded-[32px] bg-card p-4 lg:flex-row">
-      <div className="relative flex min-h-[300px] items-center justify-center overflow-hidden rounded-[22px] bg-gradient-to-br from-tint to-tint-2 lg:min-h-[400px] lg:flex-[3]">
-        <div className="flex h-[72%] w-[80%] items-center justify-center overflow-hidden rounded-2xl bg-card shadow-[0_24px_60px_rgba(52,81,245,0.18)]">
-          <Shot src={fp.image} alt={`${fp.title} screenshot`} label={`${fp.title} screenshot`} />
+      <div className="relative flex items-center justify-center overflow-hidden rounded-[22px] bg-gradient-to-br from-tint to-tint-2 px-5 py-8 sm:px-10 sm:py-12 lg:min-h-[400px] lg:flex-[3]">
+        {/* Frame matches the screenshot's 1440×768 (15:8) shape, so nothing gets cropped. */}
+        <div className="flex aspect-[15/8] w-full items-center justify-center overflow-hidden rounded-xl bg-card shadow-[0_24px_60px_rgba(52,81,245,0.18)] ring-1 ring-black/5 sm:rounded-2xl dark:ring-white/10">
+          <Shot src={fp.image} alt={`${fp.title} dashboard`} label={`${fp.title} screenshot`} />
         </div>
       </div>
 
