@@ -36,14 +36,18 @@ function Portrait() {
         {heroTags[2]}
       </span>
 
-      {/* Phones: compact, one line, centred under the photo. Larger screens: original size, offset left. */}
-      <div className="absolute bottom-5 left-1/2 z-20 flex w-max max-w-[calc(100%-8px)] -translate-x-1/2 items-center gap-2.5 rounded-2xl border border-white bg-card/90 py-2.5 pr-4 pl-2.5 shadow-[0_12px_32px_rgba(14,17,22,0.12)] backdrop-blur sm:bottom-6 sm:left-[-30px] sm:max-w-none sm:translate-x-0 sm:gap-3.5 sm:rounded-[20px] sm:px-5 sm:py-4 dark:border-white/10">
-        <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] bg-[#FFF4D6] text-[#8A5A00] sm:size-10 sm:rounded-xl dark:bg-[#FFC850]/15 dark:text-[#FFC850]">
-          <Trophy size={18} />
+      {/* Phones: slim one-line card across the bottom of the photo. Larger screens: detailed two-line card. */}
+      <div className="absolute inset-x-0 bottom-5 z-20 flex items-center gap-3 rounded-[18px] border border-white bg-card/90 px-3.5 py-3 shadow-[0_12px_30px_rgba(14,17,22,0.08)] backdrop-blur sm:inset-x-auto sm:bottom-6 sm:left-[-30px] sm:gap-3.5 sm:rounded-[20px] sm:px-5 sm:py-4 dark:border-white/10">
+        <span className="inline-flex size-[34px] shrink-0 items-center justify-center rounded-[10px] bg-[#FFF4D6] text-[#8A5A00] sm:size-10 sm:rounded-xl dark:bg-[#FFC850]/15 dark:text-[#FFC850]">
+          <Trophy size={17} />
         </span>
-        <span className="min-w-0">
-          <span className="block text-[11px] leading-tight text-muted sm:text-[13px]">{highlight.label}</span>
-          <span className="block text-[14px] leading-snug font-semibold whitespace-nowrap sm:text-[17px]">{highlight.title}</span>
+        <span className="text-sm sm:hidden">
+          <span className="text-muted">{highlight.short} · </span>
+          <span className="font-semibold">{highlight.shortTitle}</span>
+        </span>
+        <span className="hidden sm:block">
+          <span className="block text-[13px] text-muted">{highlight.label}</span>
+          <span className="block text-[17px] font-semibold">{highlight.title}</span>
         </span>
       </div>
     </div>
