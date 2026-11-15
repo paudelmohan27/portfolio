@@ -11,6 +11,6 @@ const app = (
 )
 
 // In production the HTML is prerendered, so React attaches to it (hydrates).
-// In dev the root is empty, so React renders from scratch.
-if (root.hasChildNodes()) hydrateRoot(root, app)
+// In dev the root only holds the <!--app-html--> placeholder comment, so React renders from scratch.
+if (root.firstElementChild) hydrateRoot(root, app)
 else createRoot(root).render(app)
