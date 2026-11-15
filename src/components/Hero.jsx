@@ -29,10 +29,10 @@ function Portrait() {
       <span className="float z-20 absolute top-[110px] left-0 -rotate-[14deg] rounded-full bg-card px-4 py-2.5 text-[15px] shadow-[0_10px_30px_rgba(52,81,245,0.18)] sm:left-[-10px] sm:text-base">
         {heroTags[0]}
       </span>
-      <span className="float float-delay z-20 absolute top-[50px] right-2 rotate-[12deg] rounded-full bg-card px-4 py-2.5 text-[15px] shadow-[0_10px_30px_rgba(52,81,245,0.18)] sm:right-0 sm:text-base">
+      <span className="float float-delay z-20 absolute top-[50px] right-2 rotate-[12deg] rounded-full bg-card px-4 py-2.5 text-[15px] shadow-[0_10px_30px_rgba(52,81,245,0.18)] sm:right-0 sm:text-base lg:right-3">
         {heroTags[1]}
       </span>
-      <span className="float z-20 absolute top-[260px] right-0 -rotate-6 rounded-full bg-solid px-4 py-2.5 text-[15px] text-on-solid sm:top-[300px] sm:right-[-20px]">
+      <span className="float z-20 absolute top-[260px] right-0 -rotate-6 rounded-full bg-solid px-4 py-2.5 text-[15px] text-on-solid sm:top-[300px] sm:right-[-20px] lg:right-0">
         {heroTags[2]}
       </span>
 
@@ -62,7 +62,7 @@ export default function Hero() {
       id="top"
       className="overflow-hidden bg-gradient-to-b from-tint via-tint-2 to-page px-5 pt-28 sm:px-6 sm:pt-32"
     >
-      <div className="relative mx-auto flex max-w-[1240px] flex-col-reverse items-center gap-6 lg:flex-row lg:items-end lg:gap-10">
+      <div className="relative mx-auto flex max-w-[1240px] flex-col-reverse items-center gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute top-6 left-1/2 -translate-x-1/2 text-[22vw] leading-none font-bold tracking-[-0.05em] whitespace-nowrap text-ghost select-none lg:top-10 lg:text-[220px]"
@@ -70,7 +70,7 @@ export default function Hero() {
           &lt;builder/&gt;
         </div>
 
-        <div className="relative w-full flex-1 pb-16 lg:pb-[72px]">
+        <div className="relative w-full flex-1 pb-16 lg:max-w-[600px] lg:pb-[72px] xl:max-w-[660px]">
           <div className="inline-flex items-center gap-2 rounded-full bg-card py-2 pr-3.5 pl-2.5 text-sm text-muted">
             <span className="size-2 rounded-full bg-[#1F9D55] dark:bg-[#3DDC84]" />
             {profile.status}
