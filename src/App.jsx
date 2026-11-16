@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
+import Ticker from './components/Ticker.jsx'
 import About from './components/About.jsx'
 import Skills from './components/Skills.jsx'
 import Projects from './components/Projects.jsx'
@@ -24,6 +25,7 @@ export default function App() {
       <Navbar dark={dark} onToggleTheme={toggle} />
       <main id="main">
         <Hero />
+        <Ticker />
         <About />
         <Projects />
         <div className="band relative mx-2 mt-20 overflow-hidden rounded-[32px] pb-20 sm:mx-4 sm:mt-32 sm:rounded-[44px] sm:pb-28">

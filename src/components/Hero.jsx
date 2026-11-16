@@ -1,3 +1,4 @@
+import { Fragment, useEffect, useRef } from 'react'
 import { heroTags, highlight, profile } from '../data/content.js'
 import { Download, GitHub, LinkedIn, Mail, Trophy } from './Icons.jsx'
 import { GhostButton, PillArrowLink, isPlaceholder } from './ui.jsx'
@@ -5,9 +6,47 @@ import { GhostButton, PillArrowLink, isPlaceholder } from './ui.jsx'
 // Entrance delay helper: <div className="intro" style={d(0.2)}> starts 0.2s after load.
 const d = (seconds) => ({ '--d': `${seconds}s` })
 
+const WORD_STEP = 0.07
+
+// Splits text into words that each rise out of their own mask, one after another.
+function Words({ text, start }) {
+  return text.split(' ').map((word, i) => (
+    <Fragment key={`${word}-${i}`}>
+      <span className="word">
+        <span style={d(start + i * WORD_STEP)}>{word}</span>
+      </span>{' '}
+    </Fragment>
+  ))
+}
+
+// Sets --p on the element from 0 to 1 over the first screen of scrolling, for parallax.
+function useScrollProgress() {
+  const ref = useRef(null)
+  useEffect(() => {
+    const el = ref.current
+    if (!el || matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const p = Math.min(1, Math.max(0, window.scrollY / window.innerHeight))
+      el.style.setProperty('--p', p.toFixed(3))
+    }
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(frame)
+    }
+  }, [])
+  return ref
+}
+
 function Portrait() {
   return (
-    <div className="relative flex h-[440px] w-full max-w-[460px] items-end justify-center sm:h-[560px]">
+    <div className="parallax-fast relative flex h-[440px] w-full max-w-[460px] items-end justify-center sm:h-[560px]">
       <div
         className="intro-scale relative flex h-[400px] w-[300px] items-end justify-center overflow-hidden rounded-t-full bg-gradient-to-b from-accent to-accent-2 sm:h-[520px] sm:w-[400px]"
         style={d(0.15)}
@@ -74,19 +113,23 @@ function Portrait() {
 
 export default function Hero() {
   const { links } = profile
+  const sectionRef = useScrollProgress()
+  const leadWords = profile.role.lead.split(' ').length
 
   return (
     <section
       id="top"
+      ref={sectionRef}
       className="overflow-hidden bg-gradient-to-b from-tint via-tint-2 to-page px-5 pt-28 sm:px-6 sm:pt-32"
     >
       <div className="relative mx-auto flex max-w-[1240px] flex-col-reverse items-center gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
-        <div
-          aria-hidden="true"
-          className="intro-fade pointer-events-none absolute top-6 left-1/2 -translate-x-1/2 text-[22vw] leading-none font-bold tracking-[-0.05em] whitespace-nowrap text-ghost select-none lg:top-10 lg:text-[220px]"
-          style={d(0.1)}
-        >
-          &lt;builder/&gt;
+        <div aria-hidden="true" className="parallax-slow pointer-events-none absolute inset-0">
+          <div
+            className="intro-fade absolute top-6 left-1/2 -translate-x-1/2 text-[22vw] leading-none font-bold tracking-[-0.05em] whitespace-nowrap text-ghost select-none lg:top-10 lg:text-[220px]"
+            style={d(0.1)}
+          >
+            &lt;builder/&gt;
+          </div>
         </div>
 
         <div className="relative w-full flex-1 pb-16 lg:max-w-[600px] lg:pb-[72px] xl:max-w-[660px]">
@@ -98,11 +141,11 @@ export default function Hero() {
             <span className="intro mt-7 block text-xl font-normal text-muted" style={d(0.1)}>
               Hey, I’m {profile.name}.
             </span>
-            <span
-              className="intro mt-2.5 block text-5xl leading-[0.98] font-semibold tracking-[-0.045em] sm:text-7xl xl:text-[88px]"
-              style={d(0.2)}
-            >
-              {profile.role.lead} <span className="text-accent dark:text-[#8FA2FF]">{profile.role.highlight}</span>
+            <span className="mt-2.5 block text-5xl leading-[0.98] font-semibold tracking-[-0.045em] sm:text-7xl xl:text-[88px]">
+              <Words text={profile.role.lead} start={0.18} />
+              <span className="text-accent dark:text-[#8FA2FF]">
+                <Words text={profile.role.highlight} start={0.18 + leadWords * WORD_STEP} />
+              </span>
             </span>
           </h1>
           <p className="intro mt-6 max-w-[500px] text-lg leading-relaxed text-muted sm:text-[19px]" style={d(0.32)}>
