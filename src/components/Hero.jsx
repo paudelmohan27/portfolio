@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useRef } from 'react'
-import { heroTags, highlight, profile } from '../data/content.js'
-import { Download, GitHub, LinkedIn, Mail, Trophy } from './Icons.jsx'
+import { heroTags, profile } from '../data/content.js'
+import { Download, GitHub, LinkedIn, Mail } from './Icons.jsx'
 import { GhostButton, PillArrowLink, isPlaceholder } from './ui.jsx'
 
 // Entrance delay helper: <div className="intro" style={d(0.2)}> starts 0.2s after load.
@@ -89,24 +89,6 @@ function Portrait() {
       >
         {heroTags[2]}
       </span>
-
-      {/* Phones: slim one-line card across the bottom of the photo. Larger screens: detailed two-line card, centred on the arch. */}
-      <div
-        className="intro absolute inset-x-0 bottom-5 z-20 flex items-center gap-3 rounded-[18px] border border-white bg-card/90 px-3.5 py-3 shadow-[0_12px_30px_rgba(14,17,22,0.08)] backdrop-blur sm:inset-x-auto sm:bottom-6 sm:left-1/2 sm:w-max sm:-translate-x-1/2 sm:gap-3.5 sm:rounded-[20px] sm:px-5 sm:py-4 dark:border-white/10"
-        style={d(1)}
-      >
-        <span className="inline-flex size-[34px] shrink-0 items-center justify-center rounded-[10px] bg-[#FFF4D6] text-[#8A5A00] sm:size-10 sm:rounded-xl dark:bg-[#FFC850]/15 dark:text-[#FFC850]">
-          <Trophy size={17} />
-        </span>
-        <span className="text-sm sm:hidden">
-          <span className="text-muted">{highlight.short} · </span>
-          <span className="font-semibold">{highlight.shortTitle}</span>
-        </span>
-        <span className="hidden sm:block">
-          <span className="block text-[13px] text-muted">{highlight.label}</span>
-          <span className="block text-[17px] font-semibold">{highlight.title}</span>
-        </span>
-      </div>
     </div>
   )
 }

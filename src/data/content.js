@@ -23,14 +23,6 @@ export const profile = {
 
 export const heroTags = ['React & Node', 'C++', 'Problem solver']
 
-export const highlight = {
-  label: 'Prerana Tech Fest 2024',
-  title: 'Winner · Competitive Programming',
-  // One-line version shown on phones
-  short: 'Prerana Tech Fest',
-  shortTitle: 'Champion',
-}
-
 export const about = {
   statement: 'I build web apps that students actually use.',
   statementMuted: 'Now learning to make them faster, safer and simpler — one project at a time.',
