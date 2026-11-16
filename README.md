@@ -40,10 +40,10 @@ Full-stack web apps with React and Node, problem solving in C++.
 | Section | What it shows |
 |---|---|
 | Hero | Intro, availability status, CV download and social links |
-| About | Short statement and quick facts |
-| Toolbox | Languages, web stack and tools |
-| Projects | StudyTracker (featured), Boolean Algebra Solver, Digital Diary, CricVerse |
-| Journey | Timeline of milestones |
+| About | Bento grid: statement, stats, availability, education and achievements |
+| Projects | Large numbered cards: StudyTracker, Boolean Algebra Solver, Digital Diary, CricVerse |
+| Toolbox | Languages, web stack and tools (on the deep-blue band) |
+| Journey | Timeline of milestones (on the deep-blue band) |
 | Contact | Email and a contact form |
 
 ## Tech stack

@@ -1,62 +1,88 @@
-import { featuredProject as fp, profile, projects } from '../data/content.js'
+import { profile, projects } from '../data/content.js'
 import { ArrowUpRight } from './Icons.jsx'
 import Reveal from './Reveal.jsx'
-import { SectionLabel, SectionTitle } from './ui.jsx'
+import { PillArrowLink, SectionLabel, SectionTitle } from './ui.jsx'
 
+// Background behind each screenshot.
 const tints = {
-  blue: 'from-[#E3E8FF] to-page dark:from-[#1C2A6B]/60',
-  green: 'from-[#E6F3EE] to-page dark:from-[#123D2C]/70',
-  orange: 'from-[#FFF0E3] to-page dark:from-[#4A2A12]/70',
+  blue: 'from-tint to-tint-2',
+  violet: 'from-[#DCD8FF] to-[#EEF0FB] dark:from-[#2A2370] dark:to-[#141826]',
+  green: 'from-[#D9F0E6] to-[#F1F6F4] dark:from-[#123D2C] dark:to-[#141826]',
+  orange: 'from-[#FFE6D2] to-[#FBF3EE] dark:from-[#4A2A12] dark:to-[#141826]',
 }
 
-function Shot({ src, alt, label, className = '' }) {
-  if (src) return <img src={src} alt={alt} className={`h-full w-full object-cover object-left-top ${className}`} loading="lazy" />
-  return <span className="font-mono text-xs text-muted">[ {label} ]</span>
-}
+function ProjectCard({ project: p, index }) {
+  const number = String(index + 1).padStart(2, '0')
 
-function Featured() {
   return (
-    <Reveal as="article" className="mt-10 flex flex-col gap-4 rounded-[32px] bg-card p-4 lg:flex-row">
-      <div className="relative flex items-center justify-center overflow-hidden rounded-[22px] bg-gradient-to-br from-tint to-tint-2 px-5 py-8 sm:px-10 sm:py-12 lg:min-h-[400px] lg:flex-[3]">
-        {/* Frame matches the screenshot's 1440×768 (15:8) shape, so nothing gets cropped. */}
-        <div className="flex aspect-[15/8] w-full items-center justify-center overflow-hidden rounded-xl bg-card shadow-[0_24px_60px_rgba(52,81,245,0.18)] ring-1 ring-black/5 sm:rounded-2xl dark:ring-white/10">
-          <Shot src={fp.image} alt={`${fp.title} dashboard`} label={`${fp.title} screenshot`} />
+    <Reveal
+      as="article"
+      className="grid gap-3 rounded-[32px] bg-card p-3 sm:gap-4 sm:p-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-8"
+    >
+      {/* Text */}
+      <div className="order-2 flex min-w-0 flex-col px-3 pt-2 pb-4 sm:px-4 lg:order-1 lg:py-5 lg:pl-5">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex flex-wrap gap-2">
+            {p.featured && <span className="rounded-full bg-accent px-3 py-1.5 text-[13px] text-white">Featured</span>}
+            <span className="rounded-full bg-soft px-3 py-1.5 text-[13px]">
+              {p.kind} · {p.year}
+            </span>
+          </div>
+          <span aria-hidden="true" className="text-5xl leading-none font-semibold tracking-[-0.04em] text-faint/60 tabular-nums sm:text-6xl">
+            {number}
+          </span>
+        </div>
+
+        <h3 className="mt-5 text-[30px] leading-tight font-semibold tracking-[-0.03em] sm:text-4xl">{p.title}</h3>
+        <p className="mt-3 text-[16px] leading-relaxed text-muted sm:text-[17px]">{p.description}</p>
+
+        {p.points?.length > 0 && (
+          <ul className="mt-5 flex flex-col gap-2.5 text-[15px]">
+            {p.points.map((pt) => (
+              <li key={pt} className="flex gap-2.5">
+                <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-accent" />
+                {pt}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <p className="mt-5 font-mono text-xs text-muted">{p.stack.join(' · ')}</p>
+
+        <div className="mt-auto flex flex-wrap items-center gap-2.5 pt-7">
+          {p.live ? (
+            <>
+              <PillArrowLink href={p.live} target="_blank" rel="noreferrer">
+                Live site
+              </PillArrowLink>
+              <a
+                href={p.code}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex h-[52px] items-center rounded-full border border-line px-6 text-base font-medium hover:border-ink/40"
+              >
+                Code
+              </a>
+            </>
+          ) : (
+            <PillArrowLink href={p.code} target="_blank" rel="noreferrer">
+              View code
+            </PillArrowLink>
+          )}
         </div>
       </div>
 
-      <div className="flex min-w-0 flex-col px-3 py-4 sm:px-5 sm:py-6 lg:flex-[2]">
-        <div className="flex flex-wrap gap-2">
-          <span className="rounded-full bg-accent px-3 py-1.5 text-[13px] text-white">Featured</span>
-          <span className="rounded-full bg-soft px-3 py-1.5 text-[13px]">{fp.meta}</span>
-        </div>
-        <h3 className="mt-5 text-4xl font-semibold tracking-[-0.03em]">{fp.title}</h3>
-        <p className="mt-3 text-[17px] leading-relaxed text-muted">{fp.description}</p>
-        <ul className="mt-5 flex flex-col gap-2.5 text-[15px]">
-          {fp.points.map((p) => (
-            <li key={p} className="flex gap-2.5">
-              <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-accent" />
-              {p}
-            </li>
-          ))}
-        </ul>
-        <p className="mt-5 font-mono text-xs text-muted">{fp.stack.join(' · ')}</p>
-        <div className="mt-auto flex gap-2.5 pt-6">
-          <a
-            href={fp.live}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex h-11 items-center gap-1.5 rounded-full bg-solid px-5 text-[15px] font-medium text-on-solid"
-          >
-            Live site <ArrowUpRight size={16} />
-          </a>
-          <a
-            href={fp.code}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex h-11 items-center rounded-full border border-line px-5 text-[15px] font-medium hover:border-ink/40"
-          >
-            Code
-          </a>
+      {/* Screenshot */}
+      <div
+        className={`order-1 flex items-center overflow-hidden rounded-[24px] bg-gradient-to-br px-4 py-6 sm:px-8 sm:py-10 lg:order-2 lg:px-10 ${tints[p.tint] ?? tints.blue}`}
+      >
+        <div className="aspect-[15/8] w-full overflow-hidden rounded-xl bg-card shadow-[0_24px_60px_rgba(14,17,22,0.16)] ring-1 ring-black/5 sm:rounded-2xl dark:ring-white/10">
+          <img
+            src={p.image}
+            alt={`${p.title} screenshot`}
+            loading="lazy"
+            className="h-full w-full object-cover object-left-top transition-transform duration-700 hover:scale-[1.03]"
+          />
         </div>
       </div>
     </Reveal>
@@ -82,40 +108,9 @@ export default function Projects() {
           </a>
         </div>
 
-        <Featured />
-
-        <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 flex flex-col gap-4 sm:gap-5">
           {projects.map((p, i) => (
-            <Reveal key={p.title} as="article" delay={i * 90} className="group flex flex-col rounded-[28px] bg-card p-3.5">
-              <div
-                className={`flex aspect-[16/10] items-center justify-center overflow-hidden rounded-[18px] bg-gradient-to-br ${tints[p.tint]}`}
-              >
-                <Shot
-                  src={p.image}
-                  alt={`${p.title} screenshot`}
-                  label="screenshot"
-                  className="transition-transform duration-500 group-hover:scale-[1.03]"
-                />
-              </div>
-              <div className="flex flex-1 flex-col px-3 pt-5 pb-2.5">
-                <div className="flex items-baseline justify-between gap-2">
-                  <h3 className="text-2xl font-semibold tracking-[-0.02em]">{p.title}</h3>
-                  <span className="text-[13px] text-muted">{p.year}</span>
-                </div>
-                <p className="mt-2.5 text-base leading-normal text-muted">{p.description}</p>
-                <p className="mt-3.5 font-mono text-xs text-muted">{p.stack}</p>
-                <div className="mt-auto flex gap-4 pt-5 text-[15px] font-medium">
-                  {p.live && (
-                    <a href={p.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:text-accent">
-                      Live <ArrowUpRight size={15} />
-                    </a>
-                  )}
-                  <a href={p.code} target="_blank" rel="noreferrer" className="hover:text-accent">
-                    Code
-                  </a>
-                </div>
-              </div>
-            </Reveal>
+            <ProjectCard key={p.title} project={p} index={i} />
           ))}
         </div>
       </div>

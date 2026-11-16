@@ -39,6 +39,22 @@
   --ghost-word: rgba(255, 255, 255, 0.05);
 }
 
+/* Deep-blue band (Toolbox + Journey). Same look in light and dark mode. */
+.band {
+  --page: #0e1850;
+  --card: rgba(255, 255, 255, 0.07);
+  --soft: rgba(255, 255, 255, 0.1);
+  --ink: #f2f4ff;
+  --muted: #b9c2ea;
+  --faint: #8791c6;
+  --line: rgba(255, 255, 255, 0.14);
+  --accent: #9db0ff;
+  color: var(--ink);
+  background:
+    radial-gradient(120% 60% at 50% 0%, #2f45d8 0%, rgba(47, 69, 216, 0) 60%),
+    linear-gradient(180deg, #16237a 0%, #0c1550 55%, #0a1240 100%);
+}
+
 @theme inline {
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, monospace;

@@ -70,6 +70,13 @@ export const Mail = ({ size = 18 }) => (
   </svg>
 )
 
+export const GraduationCap = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...base}>
+    <path d="M22 10L12 5 2 10l10 5 10-5z" />
+    <path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" />
+  </svg>
+)
+
 export const Trophy = ({ size = 20 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" {...base}>
     <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z" />

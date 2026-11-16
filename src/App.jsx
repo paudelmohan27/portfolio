@@ -23,9 +23,11 @@ export default function App() {
       <main id="main">
         <Hero />
         <About />
-        <Skills />
         <Projects />
-        <Journey />
+        <div className="band mx-2 mt-20 overflow-hidden rounded-[32px] pb-20 sm:mx-4 sm:mt-32 sm:rounded-[44px] sm:pb-28">
+          <Skills />
+          <Journey />
+        </div>
         <Contact />
       </main>
       <Footer />

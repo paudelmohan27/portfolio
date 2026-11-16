@@ -39,6 +39,16 @@ export const about = {
     { value: '4', label: 'Apps live online' },
     { value: '2nd', label: 'Year of Computer Engineering', accent: true },
   ],
+  availability: { title: 'Open to internships', sub: '2026' },
+  education: {
+    degree: 'B.E. Computer Engineering',
+    school: 'Advanced College of Engineering and Management (ACEM), Tribhuvan University',
+    when: 'Oct 2025 – present · Kathmandu',
+  },
+  achievements: [
+    { title: 'Winner — Competitive Programming', where: 'Prerana Tech Fest 2024' },
+    { title: 'First runner-up — Inter-school hackathon', where: 'SOS, Bharatpur' },
+  ],
 }
 
 export const skillGroups = [
@@ -47,38 +57,45 @@ export const skillGroups = [
   { title: 'Tools', sub: 'What keeps it running', items: ['Git & GitHub', 'GitHub Actions', 'Vercel', 'Render', 'Qt'] },
 ]
 
-export const featuredProject = {
-  title: 'StudyTracker',
-  meta: 'Full-stack · 2026',
-  description:
-    'A study planner that tracks syllabus progress against exam dates, logs sessions with a Pomodoro timer, and flags the subjects falling behind.',
-  points: [
-    'JWT auth, rate limiting and input validation',
-    'Progress charts and exam countdowns',
-    'Avatar uploads with cropping (Cloudinary)',
-  ],
-  stack: ['React', 'Express', 'MongoDB', 'Tailwind'],
-  image: '/projects/studytracker.jpg',
-  live: 'https://tracker.paudelmohan.com.np',
-  code: 'https://github.com/paudelmohan27/StudyTracker',
-}
-
+// Shown as large numbered cards (01, 02, …) in this order. `tint` sets the screenshot background.
 export const projects = [
   {
-    title: 'Boolean Algebra Solver',
+    title: 'StudyTracker',
+    kind: 'Full-stack web app',
     year: '2026',
-    description: 'Truth tables, Karnaugh maps and logic circuit diagrams from a single expression.',
-    stack: 'TypeScript · Vercel',
-    image: '/projects/boolean-solver.jpg',
+    featured: true,
+    description:
+      'A study planner that tracks syllabus progress against exam dates, logs sessions with a Pomodoro timer, and flags the subjects falling behind.',
+    points: [
+      'JWT auth, rate limiting and input validation',
+      'Progress charts and exam countdowns',
+      'Avatar uploads with cropping (Cloudinary)',
+    ],
+    stack: ['React', 'Express', 'MongoDB', 'Tailwind'],
+    image: '/projects/studytracker.jpg',
     tint: 'blue',
+    live: 'https://tracker.paudelmohan.com.np',
+    code: 'https://github.com/paudelmohan27/StudyTracker',
+  },
+  {
+    title: 'Boolean Algebra Solver',
+    kind: 'Logic design tool',
+    year: '2026',
+    description: 'Truth tables, Karnaugh maps and logic circuit diagrams from a single Boolean expression.',
+    points: ['Truth tables and Karnaugh maps', 'Logic circuit diagrams', 'Quine–McCluskey simplification with don’t-cares'],
+    stack: ['TypeScript', 'Vercel'],
+    image: '/projects/boolean-solver.jpg',
+    tint: 'violet',
     live: 'https://boolean-algebra-solver.vercel.app',
     code: 'https://github.com/paudelmohan27/BooleanAlgebraSolver',
   },
   {
     title: 'Digital Diary',
+    kind: 'Desktop app',
     year: '2026',
-    description: 'A desktop diary with login, entry search and local storage.',
-    stack: 'C++ · Qt Widgets',
+    description: 'A desktop diary built in C++ and Qt Widgets, with user login and searchable entries stored locally.',
+    points: ['Login and user accounts', 'Create, open, edit and delete entries', 'Search and local storage'],
+    stack: ['C++', 'Qt Widgets'],
     image: '/projects/digital-diary.jpg',
     tint: 'green',
     live: null,
@@ -86,9 +103,11 @@ export const projects = [
   },
   {
     title: 'CricVerse',
+    kind: 'Live data web app',
     year: '2026',
-    description: 'Live cricket scores and ICC rankings, built on the Cricbuzz API.',
-    stack: 'HTML · CSS · JavaScript',
+    description: 'Live cricket scores and ICC rankings in plain HTML, CSS and JavaScript, built on the Cricbuzz API.',
+    points: ['Live scores and ICC rankings', 'Asynchronous data fetching', 'API rate-limit handling'],
+    stack: ['HTML', 'CSS', 'JavaScript'],
     image: '/projects/cricverse.jpg',
     tint: 'orange',
     live: 'https://mohanpaudel761.com.np',
