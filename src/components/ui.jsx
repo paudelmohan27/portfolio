@@ -1,19 +1,24 @@
 import { ArrowUpRight } from './Icons.jsx'
+import Reveal from './Reveal.jsx'
 
 export function SectionLabel({ children, light = false }) {
   return (
-    <span className={`inline-flex items-center gap-2 text-[15px] ${light ? 'text-white/85' : 'text-muted'}`}>
+    <Reveal as="span" className={`inline-flex items-center gap-2 text-[15px] ${light ? 'text-white/85' : 'text-muted'}`}>
       <span className={`size-2 rounded-[3px] ${light ? 'bg-white' : 'bg-accent'}`} />
       {children}
-    </span>
+    </Reveal>
   )
 }
 
 export function SectionTitle({ children, className = '' }) {
   return (
-    <h2 className={`mt-3 text-4xl leading-none font-semibold tracking-[-0.04em] sm:text-5xl lg:text-[56px] ${className}`}>
+    <Reveal
+      as="h2"
+      delay={90}
+      className={`mt-3 text-4xl leading-none font-semibold tracking-[-0.04em] sm:text-5xl lg:text-[56px] ${className}`}
+    >
       {children}
-    </h2>
+    </Reveal>
   )
 }
 

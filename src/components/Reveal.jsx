@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 
-// Fades its children in when they scroll into view.
-export default function Reveal({ as: Tag = 'div', delay = 0, className = '', children, ...rest }) {
+// Animates its children in when they scroll into view.
+// variant: 'up' (default) | 'scale' | 'left' | 'right' | 'blur'. Styles live in index.css.
+export default function Reveal({ as: Tag = 'div', delay = 0, variant = 'up', className = '', style, children, ...rest }) {
   const ref = useRef(null)
   const [visible, setVisible] = useState(false)
 
@@ -19,7 +20,7 @@ export default function Reveal({ as: Tag = 'div', delay = 0, className = '', chi
           io.disconnect()
         }
       },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' },
+      { threshold: 0.15, rootMargin: '0px 0px -60px 0px' },
     )
     io.observe(el)
     return () => io.disconnect()
@@ -28,8 +29,8 @@ export default function Reveal({ as: Tag = 'div', delay = 0, className = '', chi
   return (
     <Tag
       ref={ref}
-      className={`reveal ${visible ? 'is-visible' : ''} ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
+      className={`reveal reveal-${variant} ${visible ? 'is-visible' : ''} ${className}`}
+      style={{ transitionDelay: `${delay}ms`, ...style }}
       {...rest}
     >
       {children}

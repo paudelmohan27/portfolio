@@ -51,6 +51,79 @@ export const about = {
   ],
 }
 
+// "What I do" section. icon: layers | layout | monitor | cpu
+export const services = {
+  heading: 'What I can build for you',
+  items: [
+    {
+      icon: 'layers',
+      title: 'Full-stack web apps',
+      body: 'From database to deploy: REST APIs with Express and MongoDB, authentication, and React front ends.',
+      tags: ['React', 'Node.js', 'Express', 'MongoDB'],
+    },
+    {
+      icon: 'layout',
+      title: 'Frontend & UI',
+      body: 'Responsive, accessible interfaces with light and dark themes and smooth interactions.',
+      tags: ['React', 'Tailwind CSS', 'Vite'],
+    },
+    {
+      icon: 'monitor',
+      title: 'Desktop apps',
+      body: 'Native desktop software in C++ with Qt Widgets — like Digital Diary.',
+      tags: ['C++', 'Qt'],
+    },
+    {
+      icon: 'cpu',
+      title: 'Problem solving',
+      body: 'Competitive programmer and Prerana Tech Fest winner, at home with algorithms and data structures in C++.',
+      tags: ['C++', 'Algorithms', 'Data structures'],
+    },
+  ],
+  cta: {
+    title: 'Let’s build something useful',
+    body: 'Open to internships and freelance web projects.',
+    button: 'Start a conversation',
+  },
+}
+
+// FAQ section. Keep answers true — edit freely.
+export const faq = {
+  heading: 'Questions people ask me',
+  aside: {
+    title: 'Got a question that isn’t here?',
+    body: 'Send me a message — I usually reply within a day.',
+  },
+  items: [
+    {
+      q: 'Are you open to internships?',
+      a: 'Yes. I’m looking for internships in 2026, especially frontend or full-stack roles where I can ship real features and learn from an engineering team.',
+    },
+    {
+      q: 'Do you take freelance projects?',
+      a: 'Yes, for web projects that fit around my studies — landing pages, dashboards and small full-stack apps.',
+    },
+    {
+      q: 'What do you usually build with?',
+      a: 'React, Tailwind CSS, Node.js, Express and MongoDB for the web, C++ and Qt for desktop apps, and Python when it’s the right tool.',
+    },
+    {
+      q: 'Where are you based?',
+      a: 'Kathmandu, Nepal. I study Computer Engineering at ACEM, Tribhuvan University.',
+    },
+    {
+      q: 'How quickly do you reply?',
+      a: 'Usually within a day. Email or the contact form both reach me.',
+    },
+  ],
+}
+
+// Closing call-to-action in the footer.
+export const closing = {
+  heading: 'Ready to start something great?',
+  button: 'Say hello',
+}
+
 export const skillGroups = [
   { title: 'Languages', sub: 'Where I think in code', items: ['C', 'C++', 'Python', 'JavaScript', 'TypeScript'] },
   { title: 'Web', sub: 'What I ship with', items: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'HTML & CSS'] },

@@ -70,6 +70,47 @@ export const Mail = ({ size = 18 }) => (
   </svg>
 )
 
+export const Layers = ({ size = 22 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...base}>
+    <path d="M12 3l9 5-9 5-9-5 9-5z" />
+    <path d="M3 13l9 5 9-5" />
+    <path d="M3 17l9 5 9-5" />
+  </svg>
+)
+
+export const Layout = ({ size = 22 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...base}>
+    <rect x="3" y="4" width="18" height="16" rx="2" />
+    <path d="M3 9h18M9 9v11" />
+  </svg>
+)
+
+export const Monitor = ({ size = 22 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...base}>
+    <rect x="3" y="4" width="18" height="12" rx="2" />
+    <path d="M8 20h8M12 16v4" />
+  </svg>
+)
+
+export const Cpu = ({ size = 22 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...base}>
+    <rect x="6" y="6" width="12" height="12" rx="2" />
+    <path d="M10 10h4v4h-4zM9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4" />
+  </svg>
+)
+
+export const Plus = ({ size = 18 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...base} strokeWidth={2}>
+    <path d="M12 5v14M5 12h14" />
+  </svg>
+)
+
+export const ArrowUp = ({ size = 18 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...base} strokeWidth={2}>
+    <path d="M12 19V5M6 11l6-6 6 6" />
+  </svg>
+)
+
 export const GraduationCap = ({ size = 20 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" {...base}>
     <path d="M22 10L12 5 2 10l10 5 10-5z" />

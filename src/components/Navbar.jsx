@@ -7,6 +7,7 @@ const links = [
   { href: '#top', label: 'Home' },
   { href: '#about', label: 'About' },
   { href: '#work', label: 'Projects' },
+  { href: '#services', label: 'Services' },
   { href: '#contact', label: 'Contact' },
 ]
 
@@ -132,7 +133,7 @@ export default function Navbar({ dark, onToggleTheme }) {
 
   // Highlight the section currently in view.
   useEffect(() => {
-    const ids = ['about', 'work', 'contact']
+    const ids = ['about', 'work', 'services', 'contact']
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
