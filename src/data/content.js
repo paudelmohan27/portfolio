@@ -23,12 +23,18 @@ export const profile = {
 
 export const heroTags = ['React & Node', 'C++', 'Problem solver']
 
+// Two quick facts shown beside the portrait on desktop.
+export const heroStats = [
+  { value: '2+', label: 'Years writing code' },
+  { value: '4', label: 'Apps live online' },
+]
+
 export const about = {
   statement: 'I build web apps that students actually use.',
   statementMuted: 'Now learning to make them faster, safer and simpler — one project at a time.',
   stats: [
     { value: '15+', label: 'Public GitHub repos' },
-    { value: '4', label: 'Apps live online' },
+    { value: '5', label: 'Programming languages' },
     { value: '2nd', label: 'Year of Computer Engineering', accent: true },
   ],
   availability: { title: 'Open to internships', sub: '2026' },

@@ -188,6 +188,12 @@ body {
 .parallax-slow { translate: 0 calc(var(--p, 0) * 90px); }
 .parallax-fast { translate: 0 calc(var(--p, 0) * -40px); }
 
+/* Hero portrait: arch and photo fade out towards the bottom so the headline can sit over them. */
+.arch-fade {
+  -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent 86%);
+  mask-image: linear-gradient(to bottom, #000 50%, transparent 86%);
+}
+
 /* Decorative blurred glows (like the template's blue sections). */
 .glow {
   position: absolute;
