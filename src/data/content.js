@@ -68,7 +68,7 @@ export const services = {
     {
       icon: 'cpu',
       title: 'Problem solving',
-      body: 'Competitive programmer and Prerana Tech Fest winner, at home with algorithms and data structures in C++.',
+      body: 'Competitive programmer, at home with algorithms and data structures in C++.',
       tags: ['C++', 'Algorithms', 'Data structures'],
     },
   ],
@@ -184,7 +184,6 @@ export const journey = [
   { when: 'Sep 2026', title: 'Shipped StudyTracker', body: 'First full-stack app with auth, a database and real users.' },
   { when: 'Jul 2026', title: 'Built a desktop app in C++ and Qt', body: 'Digital Diary — login, search, local storage.' },
   { when: 'Jun 2026', title: 'Boolean Algebra Solver', body: 'Turned digital logic coursework into a tool.' },
-  { when: '2024', title: 'Won Prerana Tech Fest', body: 'First place in competitive programming. Also first runner-up at the SOS inter-school hackathon.' },
   { when: '2024', title: 'First commit', body: 'Joined GitHub. First calculator, first website, first everything.' },
 ]
 
